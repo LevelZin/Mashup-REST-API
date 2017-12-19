@@ -22,7 +22,7 @@ app.get('/test', function(req, res){
     var MBID = req.query.MBID;
     // 5b11f4ce-a62d-471e-81fc-a69a8278c7da
     var url = 'http://musicbrainz.org/ws/2/artist/' + MBID + '?inc=aliases&fmt=json';
-    http.get(options, (url, (httpRes) => {
+    http.get(url, (httpRes) => {
         const {statusCode} = httpRes;
         const contenType = httpRes.headers['content-type'];
 
@@ -50,7 +50,7 @@ app.get('/test', function(req, res){
                 console.error(e.message);
             }
         })
-    }))
+    })
 })
 
 app.listen(PORT, function(){
